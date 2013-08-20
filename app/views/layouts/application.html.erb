@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>VeganApp</title>
+  <title>My vegan places</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
@@ -13,8 +13,26 @@
 </head>
 
 <body>
+<div class="navbar navbar-inverse navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="brand" href="#">My vegan places</a>
+      <div class="nav-collapse collapse">
+        <ul class="nav">
+          <li class="active"><%= link_to "Create a new place", new_place_path %></li>
+        </ul>
+      </div><!--/.nav-collapse -->
+    </div>
+  </div>
+</div>
 
-<%= yield %>
+<div class="container">
+  <div class="row">
+    <div class="span12">
+      <%= yield %>
+    </div>
+  </div>
+</div>
 
 </body>
 </html>
