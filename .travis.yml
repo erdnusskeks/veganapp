@@ -1,0 +1,12 @@
+language: ruby
+before_script:
+- cp -v config/database.yml.example config/database.yml
+- rake db:create
+- rake db:migrate
+deploy:
+  provider: heroku
+  api_key:
+    secure: DoBGQwsjT3lnH5ZyWxGGcX0wRM5Yg5hXBeZqzOYst598uF/mDXlHO0jL2Hpaz2l/yq2Wy0CeV+mAUQr05+6CqRB5sk40JQUWed8NucRsJZtyiKCwVHW5A6XSgTg8lh3C0YhdT7hrOp1zI1zXPb7BTbvSTWQLQDvftGe+mY5MOeM=
+  app: my-vegan-places
+  on:
+    repo: erdnusskeks/veganapp

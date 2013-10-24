@@ -18,7 +18,6 @@ pickle-email-*.html
 .project
 .DS_Store
 *.sqlite3
-
-*.sqlite3
+/config/database.yml
 
 db/development.sqlite3
