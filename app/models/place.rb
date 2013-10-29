@@ -12,4 +12,12 @@ class Place < ActiveRecord::Base
   validates :lat, presence: true, numericality: true
   validates :lon, presence: true, numericality: true
 
+  def description(format)
+    if format == :short
+      "#{name} (#{city})"
+    elsif format == :long
+      "#{name}: #{address}, #{city} (Lat: #{lat.round(2)} | Long: #{lon.round(2)})"
+    end
+  end
 end
+
