@@ -1,3 +1,4 @@
+# encoding: utf-8
 require 'spec_helper'
 
 describe Place do
@@ -21,4 +22,17 @@ describe Place do
     it { should allow_mass_assignment_of(:slug) }
   end
 
+  it { expect(subject.respond_to?(:description)).to be_true }
+
+  describe '#description' do
+    subject { Place.new(name: "Amazing Place", address: "Somewhere 1", city: "Köln", lat: 50.941062, lon: 6.956332) }
+
+    context 'short' do
+      it { expect(subject.description(:short)).to eql("Amazing Place (Köln)") }
+    end
+
+    context 'long' do
+      it { expect(subject.description(:long)).to eql("Amazing Place: Somewhere 1, Köln (Lat: 50.94 | Long: 6.96)") }
+    end
+  end
 end
