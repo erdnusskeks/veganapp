@@ -35,4 +35,9 @@ describe Place do
       it { expect(subject.description(:long)).to eql("Amazing Place: Somewhere 1, Köln (Lat: 50.94 | Long: 6.96)") }
     end
   end
+
+  describe '#to_param' do
+    subject { Place.create(name: "Delicious Place", address: "Some address 123", city: "Foo", country: "Foo", slug: "delicious-foobar-place", lat: 5.9123, lon: 49.123, rating: 5) }
+    it { expect(subject.to_param).to eql("#{subject.id}-#{subject.slug}")}
+  end
 end

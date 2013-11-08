@@ -1,4 +1,9 @@
 class Place < ActiveRecord::Base
+  # Added slug to URL
+  def to_param
+    "#{id}-#{slug.parameterize}"
+  end
+
   attr_accessible :address, :city, :country, :slug, :lat, :lon, :name, :rating
 
   # write your model validations here
