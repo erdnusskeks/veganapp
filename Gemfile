@@ -13,6 +13,7 @@ end
 
 group :development, :test do
   gem 'rspec-rails', '~> 2.0'
+  gem 'guard-rspec', require: false
 end
 
 group :production do
@@ -27,3 +28,4 @@ end
 
 gem 'jquery-rails'
 gem 'coveralls', require: false
+gem 'psych'
