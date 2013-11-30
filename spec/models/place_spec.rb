@@ -46,6 +46,7 @@ describe Place do
 
       describe 'rescue and update slug' do
         it { expect{ subject.to_param }.to change { subject.slug }.from(nil).to("delicious-place-foo") }
+        it { expect(subject.to_param).to eql("#{subject.id}-delicious-place-foo") }
       end
     end
   end
