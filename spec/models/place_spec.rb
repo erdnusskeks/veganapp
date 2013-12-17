@@ -37,7 +37,18 @@ describe Place do
   end
 
   describe '#to_param' do
-    subject { Place.create(name: "Delicious Place", address: "Some address 123", city: "Foo", country: "Foo", slug: "delicious-foobar-place", lat: 5.9123, lon: 49.123, rating: 5) }
+    subject { Place.create(name: "Delicious Place", address: "Some address 123", city: "Foo", country: "Bar", slug: "delicious-place-foo", lat: 5.9123, lon: 49.123, rating: 5) }
     it { expect(subject.to_param).to eql("#{subject.id}-#{subject.slug}")}
+
+    context 'when we have no slug' do
+      before { subject.update_attribute(:slug, nil) }
+      it { expect { subject.to_param }.to_not raise_error }
+
+      describe 'rescue and update slug' do
+        it { expect{ subject.to_param }.to change { subject.slug }.from(nil).to("delicious-place-foo") }
+        it { expect(subject.to_param).to eql("#{subject.id}-delicious-place-foo") }
+      end
+    end
   end
+
 end
