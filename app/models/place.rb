@@ -1,8 +1,4 @@
 class Place < ActiveRecord::Base
-  # Added slug to URL
-  def to_param
-    "#{id}-#{slug.parameterize}"
-  end
 
   attr_accessible :address, :city, :country, :slug, :lat, :lon, :name, :rating
 
@@ -25,5 +21,19 @@ class Place < ActiveRecord::Base
       "#{name}: #{address}, #{city} (Lat: #{lat.round(2)} | Long: #{lon.round(2)})"
     end
   end
-end
 
+
+  # Added slug to URL
+  def to_param
+    "#{id}-#{slug.parameterize}"
+  rescue
+    update_attribute(:slug, build_slug)
+    "#{id}-#{build_slug}"
+  end
+
+  def build_slug
+    "#{name.parameterize}-#{city.parameterize}"
+  rescue
+    "place"
+  end
+end
