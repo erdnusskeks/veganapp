@@ -29,4 +29,4 @@ end
 
 gem 'jquery-rails'
 gem 'coveralls', require: false
-# gem 'psych'
+gem 'psych'
