@@ -14,8 +14,8 @@
 ActiveRecord::Schema.define(:version => 20131029164619) do
 
   create_table "places", :force => true do |t|
-    t.string   "address"
     t.string   "name"
+    t.string   "address"
     t.string   "city"
     t.string   "country"
     t.string   "slug"
