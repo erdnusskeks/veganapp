@@ -1,6 +1,6 @@
 <h1>Vegan-{m}APP[etit]</h1>
 <p>Alle veganen/vegetarischen Restaurants und mehr auf einen Blick.</p>
-<p>Quick & lecker ; )</p>
+<p>Quick &amp; lecker ; )</p>
 <br>
    <div id="map"></div>
 <br>
@@ -23,8 +23,8 @@
     <td><%= place.address %></td>
     <td><%= place.city %></td>
     <td><%= place.country %></td>
-    <td><%= place.lat %></td>
-    <td><%= place.lon %></td>
+<!--     <td><%= place.lat %></td>
+    <td><%= place.lon %></td> -->
     <td><%= link_to 'Show', place %> | </td>
     <td><%= link_to 'Edit', edit_place_path(place) %> | </td>
     <td><%= link_to 'Destroy', place, method: :delete, data: { confirm: 'Are you sure?' } %></td>

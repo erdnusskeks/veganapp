@@ -2,7 +2,7 @@ class PlacesController < ApplicationController
   respond_to :html
 
   def index
-    @places = Place.all
+    @places = Place.all.sort_by!{ |m| m.name.downcase }
     respond_with @places
   end
 
