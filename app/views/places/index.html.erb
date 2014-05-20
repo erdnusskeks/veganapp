@@ -6,8 +6,8 @@
 <br>
 <table>
   <tr>
-    <th>Adresse</th>
     <th>Name</th>
+    <th>Adresse</th>
     <th>Stadt</th>
     <th>Land</th>
     <th>Lat</th>
@@ -19,14 +19,14 @@
 
 <% @places.each do |place| %>
   <tr>
-    <td><%= place.address %></td>
     <td><%= place.name %></td>
+    <td><%= place.address %></td>
     <td><%= place.city %></td>
     <td><%= place.country %></td>
     <td><%= place.lat %></td>
     <td><%= place.lon %></td>
-    <td><%= link_to 'Show', place %></td>
-    <td><%= link_to 'Edit', edit_place_path(place) %></td>
+    <td><%= link_to 'Show', place %> | </td>
+    <td><%= link_to 'Edit', edit_place_path(place) %> | </td>
     <td><%= link_to 'Destroy', place, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
@@ -37,11 +37,15 @@
 <%= link_to 'New Place', new_place_path %>
 
 <script type="application/javascript">
-var map = L.map('map').setView([50.942399, 6.935242], 13);
+// var map = L.mapbox.map('map', 'erdnusskeks.i9n12he6').setView([50.942399, 6.935242], 13);
+var map = L.mapbox.map('map', 'erdnusskeks.i9n115pb')
+    .setView([50.942399, 6.935242], 13);
+    // .setView([50.942399, 6.935242], 13);
 
-L.tileLayer('http://{s}.tile.cloudmade.com/d5beea621537456d89ac681131b0284b/997/256/{z}/{x}/{y}.png', {
-    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>',
-    maxZoom: 18
+// L.tileLayer('http://{s}.tile.cloudmade.com/d5beea621537456d89ac681131b0284b/997/256/{z}/{x}/{y}.png', {
+L.tileLayer('http://{s}.tiles.mapbox.com/v3/erdnusskeks.i9n12he6/{z}/{x}/{y}.png', {
+    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, <a href="http://mapbox.com/about/maps" target="_blank">Terms & Feedback</a>',
+    maxZoom: 18,
 }).addTo(map);
 
 
